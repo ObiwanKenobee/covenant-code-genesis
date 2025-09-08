@@ -1,73 +1,44 @@
-# Welcome to your Lovable project
+# AtlasLang 🌍🕊️
+*A covenant-first programming language for building ethical, auditable, and regenerative systems.*
 
-## Project info
+---
 
-**URL**: https://lovable.dev/projects/73744e73-1272-4bce-bd84-08c84196435d
+## ✨ What is AtlasLang?
+AtlasLang is the **official language of Atlas Sanctum** — designed to encode **policy-as-code, regenerative finance, model governance, and covenant contracts** in a way that is **auditable by communities, policymakers, and engineers alike**.
 
-## How can I edit this code?
+It’s more than a programming language — it’s a *covenant framework* for safe AI, transparent ledgers, and regenerative outcomes.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🚀 Features
+- **Covenant contracts** — native primitives for multi-signer, ethical agreements.
+- **Steward identities** — role-based, MPC-controlled actors with attestations.
+- **MRV workflows** — built-in `sanctum_flow` for monitoring, reporting, and verification.
+- **AI governance** — first-class `model` objects with provenance, risk registers, and explainability hooks.
+- **Privacy by design** — `consent`, `sealed`, `enclave`, and `ephemeral` data primitives.
+- **Regenerative finance** — `covenant_token` for impact-linked assets & credits.
+- **Auditable by default** — every state change carries provenance metadata.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/73744e73-1272-4bce-bd84-08c84196435d) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🧑‍💻 Example
+```atlaslang
+// Steward identity
+steward LocalCouncil {
+  id: "did:ke:lc:001"
+  attestations: ["council-auth"]
+}
 
-**Use your preferred IDE**
+// Covenant for water credit issuance
+covenant BoreholeCovenant between [LocalCouncil, AtlasCouncil] {
+  purpose: "Verified borehole repairs create WaterCredits"
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+  guard pre disburse_repair(r) {
+    require model["photoVerifier"].run(r.image_hash) == true
+  }
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/73744e73-1272-4bce-bd84-08c84196435d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+  on commit disburse_repair(r) {
+    let credit = covenant_token.mint(holder = r.community, amount = 100)
+    ledger.append("water_credit", credit.provenance())
+  }
+}
