@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: "var(--font-sans)",
+        mono: "var(--font-mono)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -22,6 +26,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -58,10 +63,24 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      backgroundImage: {
+        "hero-gradient": "var(--hero-gradient)",
+        "earth-gradient": "var(--earth-gradient)",
+      },
+      backgroundColor: {
+        "code-bg": "hsl(var(--code-bg))",
+      },
+      boxShadow: {
+        "soft": "var(--shadow-soft)",
+        "glow": "var(--shadow-glow)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      transitionTimingFunction: {
+        "smooth": "var(--transition-smooth)",
       },
       keyframes: {
         "accordion-down": {
